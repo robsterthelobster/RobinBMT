@@ -1,5 +1,6 @@
 package com.robsterthelobster.robinbmt;
 
+import android.app.Activity;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,9 +18,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 
 import com.firebase.client.Firebase;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.ui.PlacePicker;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,12 +62,24 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+        final Activity activity = this;
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Firebase myFirebaseRef = new Firebase(BuildConfig.UNIQUE_FIREBASE_ROOT_URL);
-                myFirebaseRef.child("message").setValue("Do you have data? You'll love Firebase.");
+                //Firebase myFirebaseRef = new Firebase(BuildConfig.UNIQUE_FIREBASE_ROOT_URL);
+                //myFirebaseRef.child("message").setValue("Do you have data? You'll love Firebase.");
+                int PLACE_PICKER_REQUEST = 1;
+                PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+
+                try {
+                    startActivityForResult(builder.build(activity), PLACE_PICKER_REQUEST);
+                } catch (GooglePlayServicesRepairableException e) {
+                    e.printStackTrace();
+                } catch (GooglePlayServicesNotAvailableException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -121,8 +139,19 @@ public class MainActivity extends AppCompatActivity {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                    android.R.layout.simple_dropdown_item_1line, DRINKS);
+            AutoCompleteTextView drinksText = (AutoCompleteTextView)
+                    rootView.findViewById(R.id.drinks_list);
+            drinksText.setAdapter(adapter);
+
             return rootView;
         }
+
+        private static final String[] DRINKS = new String[] {
+                "Black Milk Tea", "Green Milk Tea", "Milk Tea", "Green Tea", "Oolong Tea"
+        };
     }
 
     /**
