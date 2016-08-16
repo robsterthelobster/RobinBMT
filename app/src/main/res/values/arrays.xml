@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="drinks_list">
+        <item>Black Tea</item>
+        <item>Green Tea</item>
+        <item>Green Milk Tea</item>
+        <item>Milk Tea</item>
+        <item>Black Milk Tea</item>
+        <item>Oolong Tea</item>
+        <item>Oolong Milk Tea</item>
+        <item>Green Apple Slush</item>
+    </string-array>
+</resources>
