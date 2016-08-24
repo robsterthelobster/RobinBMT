@@ -130,6 +130,11 @@ public class SignInActivity extends AppCompatActivity implements
             }
         });
         // [END initialize_fblogin]
+
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        if(accessToken != null){
+            handleFacebookAccessToken(accessToken);
+        }
     }
 
     @Override
@@ -238,4 +243,5 @@ public class SignInActivity extends AppCompatActivity implements
                 });
     }
     // [END auth_with_facebook]
+
 }
