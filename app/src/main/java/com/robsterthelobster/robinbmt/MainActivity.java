@@ -38,9 +38,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.robsterthelobster.robinbmt.dummy.DummyContent;
 
 public class MainActivity extends AppCompatActivity
-        implements GoogleApiClient.OnConnectionFailedListener{
+        implements GoogleApiClient.OnConnectionFailedListener, PlacesFragment.OnListFragmentInteractionListener{
 
     private static final String TAG = MainActivity.class.getSimpleName();
     public static final String ANONYMOUS = "anonymous";
@@ -156,6 +157,10 @@ public class MainActivity extends AppCompatActivity
         Toast.makeText(this, "Google Play Services error.", Toast.LENGTH_SHORT).show();
     }
 
+    public void onListFragmentInteraction(DummyContent.DummyItem item){
+
+    }
+
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -213,6 +218,9 @@ public class MainActivity extends AppCompatActivity
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
+            if(position == 0){
+                return new PlacesFragment();
+            }
             return PlaceholderFragment.newInstance(position + 1);
         }
 
