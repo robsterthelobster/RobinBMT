@@ -130,11 +130,6 @@ public class SignInActivity extends AppCompatActivity implements
             }
         });
         // [END initialize_fblogin]
-
-        AccessToken accessToken = AccessToken.getCurrentAccessToken();
-        if(accessToken != null){
-            handleFacebookAccessToken(accessToken);
-        }
     }
 
     @Override
