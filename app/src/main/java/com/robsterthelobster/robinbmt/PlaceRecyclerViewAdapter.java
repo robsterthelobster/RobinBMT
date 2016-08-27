@@ -11,6 +11,9 @@ import com.robsterthelobster.robinbmt.PlacesFragment.OnListFragmentInteractionLi
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
@@ -56,14 +59,16 @@ public class PlaceRecyclerViewAdapter extends RecyclerView.Adapter<PlaceRecycler
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.info_text) TextView mText;
         public final View mView;
-        public final TextView mText;
+
         public DummyItem mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mText = (TextView) view.findViewById(R.id.info_text);
+            ButterKnife.bind(this, view);
         }
     }
 }

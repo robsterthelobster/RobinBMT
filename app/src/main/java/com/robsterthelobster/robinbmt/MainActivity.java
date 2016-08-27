@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void onListFragmentInteraction(DummyContent.DummyItem item){
-
+        Toast.makeText(this, "Touched item " + item.id, Toast.LENGTH_SHORT).show();
     }
 
     private void getHashKey(){

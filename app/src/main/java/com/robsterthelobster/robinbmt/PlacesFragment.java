@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 import com.robsterthelobster.robinbmt.dummy.DummyContent;
 import com.robsterthelobster.robinbmt.dummy.DummyContent.DummyItem;
 
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 /**
  * A fragment representing a list of Items.
  * <p />
@@ -19,6 +22,20 @@ import com.robsterthelobster.robinbmt.dummy.DummyContent.DummyItem;
  * interface.
  */
 public class PlacesFragment extends Fragment {
+
+    /*
+        Retrofit
+        Sample URL: https://api.foursquare.com/v2/venues/explore
+            ?ll=40.7,-74
+            &query=boba
+            &venuePhotos=1
+            &oauth_token=OAUTH_TOKEN
+
+        Photo: https://irs0.4sqi.net/img/general
+            /size
+            /photo.jpg
+     */
+    private final String BASEURL = "https://api.foursquare.com/v2/venues/explore";
 
     // TODO: Customize parameters
     private int mColumnCount = 1;
@@ -52,6 +69,11 @@ public class PlacesFragment extends Fragment {
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.github.com")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
     }
 
     @Override
