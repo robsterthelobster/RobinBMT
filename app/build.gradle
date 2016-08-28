@@ -21,7 +21,9 @@ android {
     }
     buildTypes.each {
         it.buildConfigField 'String', 'UNIQUE_FIREBASE_ROOT_URL', UniqueFirebaseRootUrl
-        it.buildConfigField 'String', 'MY_GOOGLE_PLACES_KEY', GooglePlacesWebApiKey
+        it.buildConfigField 'String', 'GOOGLE_PLACES_KEY', GooglePlacesWebApiKey
+        it.buildConfigField 'String', 'FOURSQUARE_CID', FoursquareClientId
+        it.buildConfigField 'String', 'FOURSQUARE_SECRET', FoursquareClientSecret
     }
 
     packagingOptions {
