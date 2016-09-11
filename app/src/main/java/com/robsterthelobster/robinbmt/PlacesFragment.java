@@ -1,17 +1,26 @@
 package com.robsterthelobster.robinbmt;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.robsterthelobster.robinbmt.dummy.DummyContent;
 import com.robsterthelobster.robinbmt.dummy.DummyContent.DummyItem;
+import com.robsterthelobster.robinbmt.models.FoursquareCall;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -23,19 +32,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class PlacesFragment extends Fragment {
 
-    /*
-        Retrofit
-        Sample URL: https://api.foursquare.com/v2/venues/explore
-            ?ll=40.7,-74
-            &query=boba
-            &venuePhotos=1
-            &oauth_token=OAUTH_TOKEN
-
-        Photo: https://irs0.4sqi.net/img/general
-            /size
-            /photo.jpg
-     */
-    private final String BASEURL = "https://api.foursquare.com/v2/venues/explore";
+    private final String BASEURL = "https://api.foursquare.com/v2/";
 
     // TODO: Customize parameters
     private int mColumnCount = 1;
@@ -70,10 +67,38 @@ public class PlacesFragment extends Fragment {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
 
+        Date date = new Date();
+        String today = new SimpleDateFormat("yyyyMMdd").format(date);
+        Log.d("today", today);
+
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.github.com")
+                .baseUrl(BASEURL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
+        FoursquareApi foursquareApi = retrofit.create(FoursquareApi.class);
+
+        Call<FoursquareCall> call = foursquareApi.getVenues(
+                BuildConfig.FOURSQUARE_CID,
+                BuildConfig.FOURSQUARE_SECRET,
+                "40.7,-74",
+                "boba",
+                1,
+                "20160830"
+                );
+
+        call.enqueue(new Callback<FoursquareCall>() {
+            @Override
+            public void onResponse(Call<FoursquareCall> call, Response<FoursquareCall> response) {
+                Log.d("RetrofitCall", "Got response");
+                Log.d("URL", call.request().url().toString());
+            }
+
+            @Override
+            public void onFailure(Call<FoursquareCall> call, Throwable t) {
+                Log.d("RetrofitCall", "Failed call");
+            }
+        });
     }
 
     @Override
@@ -94,7 +119,6 @@ public class PlacesFragment extends Fragment {
         }
         return view;
     }
-
 
     @Override
     public void onAttach(Context context) {
