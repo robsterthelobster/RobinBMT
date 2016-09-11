@@ -8,14 +8,14 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("org.jsonschema2pojo")
-public class Photos {
+public class FeaturedPhotos {
 
     @SerializedName("count")
     @Expose
     private int count;
-    @SerializedName("groups")
+    @SerializedName("items")
     @Expose
-    private List<PhotoGroup> groups = new ArrayList<PhotoGroup>();
+    private List<Item___> items = new ArrayList<Item___>();
 
     /**
      * 
@@ -38,19 +38,19 @@ public class Photos {
     /**
      * 
      * @return
-     *     The groups
+     *     The items
      */
-    public List<PhotoGroup> getGroups() {
-        return groups;
+    public List<Item___> getItems() {
+        return items;
     }
 
     /**
      * 
-     * @param groups
-     *     The groups
+     * @param items
+     *     The items
      */
-    public void setGroups(List<PhotoGroup> groups) {
-        this.groups = groups;
+    public void setItems(List<Item___> items) {
+        this.items = items;
     }
 
 }

@@ -1,13 +1,17 @@
 package com.robsterthelobster.robinbmt;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.robsterthelobster.robinbmt.dummy.DummyContent.DummyItem;
 import com.robsterthelobster.robinbmt.PlacesFragment.OnListFragmentInteractionListener;
+import com.robsterthelobster.robinbmt.dummy.SampleVenueItem;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -21,10 +25,10 @@ import butterknife.ButterKnife;
  */
 public class PlaceRecyclerViewAdapter extends RecyclerView.Adapter<PlaceRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<SampleVenueItem> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public PlaceRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public PlaceRecyclerViewAdapter(List<SampleVenueItem> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -39,7 +43,11 @@ public class PlaceRecyclerViewAdapter extends RecyclerView.Adapter<PlaceRecycler
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mText.setText("This is card #" + mValues.get(position).id);
+        holder.mText.setText(holder.mItem.name);
+        Log.d("Photo url", holder.mItem.photoUrl);
+        Picasso.with(holder.mView.getContext())
+                .load(holder.mItem.photoUrl)
+                .into(holder.venuePhoto);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,9 +69,11 @@ public class PlaceRecyclerViewAdapter extends RecyclerView.Adapter<PlaceRecycler
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.info_text) TextView mText;
+        @BindView(R.id.venue_photo) ImageView venuePhoto;
+
         public final View mView;
 
-        public DummyItem mItem;
+        public SampleVenueItem mItem;
 
         public ViewHolder(View view) {
             super(view);

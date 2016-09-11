@@ -31,15 +31,36 @@ public class Venue {
     @SerializedName("stats")
     @Expose
     private Stats stats;
+    @SerializedName("url")
+    @Expose
+    private String url;
+    @SerializedName("price")
+    @Expose
+    private Price price;
+    @SerializedName("rating")
+    @Expose
+    private double rating;
+    @SerializedName("ratingColor")
+    @Expose
+    private String ratingColor;
+    @SerializedName("ratingSignals")
+    @Expose
+    private int ratingSignals;
     @SerializedName("allowMenuUrlEdit")
     @Expose
     private boolean allowMenuUrlEdit;
+    @SerializedName("hours")
+    @Expose
+    private Hours hours;
     @SerializedName("photos")
     @Expose
     private Photos photos;
     @SerializedName("hereNow")
     @Expose
     private HereNow hereNow;
+    @SerializedName("featuredPhotos")
+    @Expose
+    private FeaturedPhotos featuredPhotos;
 
     /**
      * 
@@ -170,6 +191,96 @@ public class Venue {
     /**
      * 
      * @return
+     *     The url
+     */
+    public String getUrl() {
+        return url;
+    }
+
+    /**
+     * 
+     * @param url
+     *     The url
+     */
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    /**
+     * 
+     * @return
+     *     The price
+     */
+    public Price getPrice() {
+        return price;
+    }
+
+    /**
+     * 
+     * @param price
+     *     The price
+     */
+    public void setPrice(Price price) {
+        this.price = price;
+    }
+
+    /**
+     * 
+     * @return
+     *     The rating
+     */
+    public double getRating() {
+        return rating;
+    }
+
+    /**
+     * 
+     * @param rating
+     *     The rating
+     */
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    /**
+     * 
+     * @return
+     *     The ratingColor
+     */
+    public String getRatingColor() {
+        return ratingColor;
+    }
+
+    /**
+     * 
+     * @param ratingColor
+     *     The ratingColor
+     */
+    public void setRatingColor(String ratingColor) {
+        this.ratingColor = ratingColor;
+    }
+
+    /**
+     * 
+     * @return
+     *     The ratingSignals
+     */
+    public int getRatingSignals() {
+        return ratingSignals;
+    }
+
+    /**
+     * 
+     * @param ratingSignals
+     *     The ratingSignals
+     */
+    public void setRatingSignals(int ratingSignals) {
+        this.ratingSignals = ratingSignals;
+    }
+
+    /**
+     * 
+     * @return
      *     The allowMenuUrlEdit
      */
     public boolean isAllowMenuUrlEdit() {
@@ -183,6 +294,24 @@ public class Venue {
      */
     public void setAllowMenuUrlEdit(boolean allowMenuUrlEdit) {
         this.allowMenuUrlEdit = allowMenuUrlEdit;
+    }
+
+    /**
+     * 
+     * @return
+     *     The hours
+     */
+    public Hours getHours() {
+        return hours;
+    }
+
+    /**
+     * 
+     * @param hours
+     *     The hours
+     */
+    public void setHours(Hours hours) {
+        this.hours = hours;
     }
 
     /**
@@ -219,6 +348,24 @@ public class Venue {
      */
     public void setHereNow(HereNow hereNow) {
         this.hereNow = hereNow;
+    }
+
+    /**
+     * 
+     * @return
+     *     The featuredPhotos
+     */
+    public FeaturedPhotos getFeaturedPhotos() {
+        return featuredPhotos;
+    }
+
+    /**
+     * 
+     * @param featuredPhotos
+     *     The featuredPhotos
+     */
+    public void setFeaturedPhotos(FeaturedPhotos featuredPhotos) {
+        this.featuredPhotos = featuredPhotos;
     }
 
 }

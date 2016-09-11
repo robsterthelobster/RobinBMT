@@ -38,6 +38,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.robsterthelobster.robinbmt.dummy.DummyContent;
+import com.robsterthelobster.robinbmt.dummy.SampleVenueItem;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -159,10 +160,6 @@ public class MainActivity extends AppCompatActivity
         Toast.makeText(this, "Google Play Services error.", Toast.LENGTH_SHORT).show();
     }
 
-    public void onListFragmentInteraction(DummyContent.DummyItem item){
-        Toast.makeText(this, "Touched item " + item.id, Toast.LENGTH_SHORT).show();
-    }
-
     private void getHashKey(){
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
@@ -178,6 +175,11 @@ public class MainActivity extends AppCompatActivity
         } catch (NoSuchAlgorithmException e) {
 
         }
+    }
+
+    @Override
+    public void onListFragmentInteraction(SampleVenueItem item) {
+        Toast.makeText(this, "Touched item " + item.name, Toast.LENGTH_SHORT).show();
     }
 
     /**

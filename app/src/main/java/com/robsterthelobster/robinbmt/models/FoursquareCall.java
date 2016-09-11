@@ -13,7 +13,7 @@ public class FoursquareCall {
     private Meta meta;
     @SerializedName("response")
     @Expose
-    private Response response;
+    private FoursquareResponse foursquareResponse;
 
     /**
      * 
@@ -36,19 +36,19 @@ public class FoursquareCall {
     /**
      * 
      * @return
-     *     The response
+     *     The foursquareResponse
      */
-    public Response getResponse() {
-        return response;
+    public FoursquareResponse getFoursquareResponse() {
+        return foursquareResponse;
     }
 
     /**
      * 
-     * @param response
-     *     The response
+     * @param foursquareResponse
+     *     The foursquareResponse
      */
-    public void setResponse(Response response) {
-        this.response = response;
+    public void setFoursquareResponse(FoursquareResponse foursquareResponse) {
+        this.foursquareResponse = foursquareResponse;
     }
 
 }

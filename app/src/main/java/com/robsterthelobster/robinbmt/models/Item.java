@@ -1,6 +1,8 @@
 
 package com.robsterthelobster.robinbmt.models;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -17,6 +19,9 @@ public class Item {
     @SerializedName("flags")
     @Expose
     private Flags flags;
+    @SerializedName("tips")
+    @Expose
+    private List<Tip> tips = new ArrayList<Tip>();
     @SerializedName("referralId")
     @Expose
     private String referralId;
@@ -73,6 +78,24 @@ public class Item {
      */
     public void setFlags(Flags flags) {
         this.flags = flags;
+    }
+
+    /**
+     * 
+     * @return
+     *     The tips
+     */
+    public List<Tip> getTips() {
+        return tips;
+    }
+
+    /**
+     * 
+     * @param tips
+     *     The tips
+     */
+    public void setTips(List<Tip> tips) {
+        this.tips = tips;
     }
 
     /**

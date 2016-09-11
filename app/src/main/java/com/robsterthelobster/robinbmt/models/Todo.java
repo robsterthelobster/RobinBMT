@@ -6,28 +6,28 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("org.jsonschema2pojo")
-public class Warning {
+public class Todo {
 
-    @SerializedName("text")
+    @SerializedName("count")
     @Expose
-    private String text;
+    private int count;
 
     /**
      * 
      * @return
-     *     The text
+     *     The count
      */
-    public String getText() {
-        return text;
+    public int getCount() {
+        return count;
     }
 
     /**
      * 
-     * @param text
-     *     The text
+     * @param count
+     *     The count
      */
-    public void setText(String text) {
-        this.text = text;
+    public void setCount(int count) {
+        this.count = count;
     }
 
 }

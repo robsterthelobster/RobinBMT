@@ -15,6 +15,11 @@
         card_view:cardCornerRadius="4dp"
         card_view:cardUseCompatPadding="true">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/venue_photo"/>
+
         <TextView
             android:id="@+id/info_text"
             android:layout_width="match_parent"

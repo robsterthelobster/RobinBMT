@@ -8,11 +8,11 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("org.jsonschema2pojo")
-public class Response {
+public class FoursquareResponse {
 
-    @SerializedName("warning")
+    @SerializedName("suggestedFilters")
     @Expose
-    private Warning warning;
+    private SuggestedFilters suggestedFilters;
     @SerializedName("suggestedRadius")
     @Expose
     private int suggestedRadius;
@@ -41,19 +41,19 @@ public class Response {
     /**
      * 
      * @return
-     *     The warning
+     *     The suggestedFilters
      */
-    public Warning getWarning() {
-        return warning;
+    public SuggestedFilters getSuggestedFilters() {
+        return suggestedFilters;
     }
 
     /**
      * 
-     * @param warning
-     *     The warning
+     * @param suggestedFilters
+     *     The suggestedFilters
      */
-    public void setWarning(Warning warning) {
-        this.warning = warning;
+    public void setSuggestedFilters(SuggestedFilters suggestedFilters) {
+        this.suggestedFilters = suggestedFilters;
     }
 
     /**
